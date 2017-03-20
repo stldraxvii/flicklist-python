@@ -5,7 +5,9 @@ class Index(webapp2.RequestHandler):
 
     def getRandomMovie(self):
 
-        movielist = ["Touch of Evil", "Rashomon", "The Night of the Hunter", "The Manchurian Candidate", "The Battle of Algiers"]
+        movielist = ["Touch of Evil", "Rashomon", "The Night of the Hunter", "The Manchurian Candidate", "The Battle of Algiers",
+        "Psycho", "2001: A Space Odyssey", "Solaris", "El Topo", "F for Fake", "Do the Right Thing", "Raging Bull", "La Haine",
+        "Boogie Nights", "Mangolia", "Hard-Boiled", "Heat", "Lost in Translation", "28 Days Later...", "Pan's Labyrinth",]
 
         selectedmovie = movielist[random.randrange(len(movielist))]
 
@@ -19,11 +21,17 @@ class Index(webapp2.RequestHandler):
         content = "<h1>Movie of the Day</h1>"
         content += "<p>" + movie + "</p>"
 
-        # TODO: pick a different random movie, and display it under
-        # the heading "<h1>Tommorrow's Movie</h1>"
-        nextmovie = self.getRandomMovie()
+        #Tomorrow's movie
+        nextmovie = ""
+        equality = True
+        while equality is True:
+            nextmovie = self.getRandomMovie()
+            if nextmovie != movie:
+                equality = False
+
         content +="<h1>Tomorrow's Movie</h1>"
         content +="<p>" + nextmovie + "</p>"
+
 
         self.response.write(content)
 
