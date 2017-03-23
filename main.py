@@ -45,7 +45,11 @@ class Index(webapp2.RequestHandler):
         <form action="/remove" method="post">
             <label>
                 I want to cross off
-                <input type="text" name="movie-to-remove"/>
+                <select name="movie-to-remove">
+                    <option>Jaws</option>
+                    <option>Platoon</option>
+                    <option>Star Wars</option>
+                </select>
                 from my watchlist.
             </label>
             <input type="submit" value="Remove It"/>
